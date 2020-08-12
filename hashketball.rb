@@ -216,4 +216,25 @@ def player_numbers(team_name)
 end
 
 
+def player_stats(player_name)
+
+  game_hash.each do |location, info|
+    
+    game_hash[location].each do |particulars, stats|
+      
+      if particulars == :players
+        
+        game_hash[location][particulars].each do |individual|
+          
+          if individual[:player_name] == player_name
+            return individual
+          end
+        end
+      end
+    end
+  end
+end
+
+
+
 
