@@ -128,7 +128,30 @@ end
 
 # Write code here
 
-def num_points_scored
-  
+def num_points_scored(player_name)
+
+  game_hash.each do |location, info|
+    
+    
+    game_hash[location].each do |particulars, stats|
+      
+      if particulars == :players
+        
+          game_hash[location][particulars].each do |individual|
+            
+            if individual[:player_name] == player_name
+              return individual
+            end
+
+          end
+
+
+      end
+
+    end
+    
+  end
+
+
 end
 
