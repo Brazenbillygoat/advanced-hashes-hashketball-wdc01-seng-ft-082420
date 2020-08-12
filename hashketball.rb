@@ -193,3 +193,27 @@ def team_names
   return teams_hash
 end
 
+
+def player_numbers(team_name)
+  jersey_numbers = []
+
+  game_hash.each do |location, info|
+    
+    game_hash[location].each do |particulars, stats|
+      
+      if particulars == :players
+        
+        game_hash[location][particulars].each do |individual|
+          
+          if info[:team_name] == team_name
+            jersey_numbers.push(individual[:number])
+          end
+        end
+      end
+    end
+  end
+  return jersey_numbers
+end
+
+
+
