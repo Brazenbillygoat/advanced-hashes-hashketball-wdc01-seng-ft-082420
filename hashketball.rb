@@ -236,5 +236,35 @@ def player_stats(player_name)
 end
 
 
+def big_shoe_rebounds
+  count = 0
+  biggest_shoe_player = ""
+  biggest_shoe_size = 0
+  biggest_shoe_rebounds = 0
 
+  game_hash.each do |location, info|
+    
+    game_hash[location].each do |particulars, stats|
+      
+      if particulars == :players
+        
+        game_hash[location][particulars].each do |individual|
+          while count == 0 do
+            biggest_shoe_player = individual[:player_name]
+            biggest_shoe_size = individual[:shoe]
+            biggest_shoe_rebounds = individual[:rebounds]
+            count = 1
+          end
+
+          if individual[:shoe] > biggest_shoe_size
+            biggest_shoe_size = individual[:shoe]
+            biggest_shoe_player = individual[:player_name]
+            biggest_shoe_rebounds = individual[:rebounds]
+          end
+        end
+      end
+    end
+  end
+  return biggest_shoe_rebounds
+end
 
